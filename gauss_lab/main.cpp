@@ -20,7 +20,8 @@ int main() {
     std::cout << "\tМеню\n" << std::endl
               << "Выберите способ задания матрицы:" << std::endl
               << "1. Ввести СЛАУ вручную" << std::endl
-              << "2. Прочитать СЛАУ из файла" << std::endl;
+              << "2. Прочитать СЛАУ из файла" << std::endl
+              << "3. Ввести случайные числа" << std::endl;
 
     int choice;
     std::cin >> choice;
@@ -30,7 +31,7 @@ int main() {
     double *vector = nullptr;
 
     switch(choice) {
-        case 1:
+        case 1: {
             std::cout << "Введите размер матрицы: ";
             std::cin >> size;
 
@@ -53,7 +54,7 @@ int main() {
                 std::cin >> vector[i];
             }
             break;
-
+        }
         case 2: {
             std::ifstream input("matrix.txt");
 
@@ -86,6 +87,32 @@ int main() {
             input.close();
             break;
         }
+        case 3: {
+            std::cout << "Введите размер матрицы: ";
+            std::cin >> size;
+
+            if (size < 2) {
+                std::cout << "Некорректный ввод" << std::endl;
+                return -1;
+            }
+
+            matrix = new double*[size];
+            vector = new double[size];
+            for (int i = 0; i < size; i++) {
+                matrix[i] = new double[size];
+            }
+            
+            srand(time(0));
+
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++) {
+                    matrix[i][j] = rand()%1000;
+                }
+                vector[i] = rand()%1000;
+            }
+
+            break;
+        }
     }
 
     SystemFunctions system(size, matrix, vector);
@@ -96,7 +123,7 @@ int main() {
     if (system.determinant()) {
         system.gauss();
     } else {
-        std::cout << "Ошибка: СЛАУ введена неправильно или определитель матрицы равен нулю" << std::endl;
+        std::cout << "Ошибка: СЛАУ введена неправильно или определитель матрицы приближен к нулю" << std::endl;
     }
 
     for (int i = 0; i < size; i++) {
