@@ -62,6 +62,10 @@ int main() {
                 std::cout << "Ошибка чтения файла" << std::endl;
                 return 1;
             }
+            else if (input.peek() == EOF) {
+                std::cout << "Файл пуст";
+                return -1;
+            }
 
             input >> size;
 

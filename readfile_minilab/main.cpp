@@ -7,9 +7,8 @@ void print(int size, double** matrix, double* vector) {
         for (int j = 0; j < size; j++) {
             std::cout << std::fixed << std::setprecision(2) << std::setw(6) << matrix[i][j] << " ";
         }
-        std::cout << "| " << std::setw(6) << vector[i] << "\n";
+        std::cout << "| " << std::setw(6) << vector[i] << std::endl;
     }
-    std::cout << "\n";
 }
 
 int main() {
@@ -17,7 +16,11 @@ int main() {
 
     if (!input.is_open()) {
         std::cout << "Ошибка чтения файла";
-        return 1;
+        return -1;
+    }
+    else if (input.peek() == EOF) {
+        std::cout << "Файл пуст";
+        return -1;
     }
 
     int size;
@@ -39,6 +42,7 @@ int main() {
 
     input.close();
 
+    std::cout << "Матрица из файла: " << std::endl;
     print(size, matrix, vector);
 
     for (int i = 0; i < size; i++) {
