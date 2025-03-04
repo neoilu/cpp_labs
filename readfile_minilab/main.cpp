@@ -11,6 +11,18 @@ void print(int size, double** matrix, double* vector) {
     }
 }
 
+int countNumbersInFile() {
+    std::ifstream input("matrix.txt");
+    if (!input.is_open()) return -1;
+
+    double num;
+    int count = 0;
+    while (input >> num) count++; 
+
+    input.close();
+    return count;
+}
+
 int main() {
     std::ifstream input("matrix.txt");
 
@@ -25,6 +37,11 @@ int main() {
 
     int size;
     input >> size;
+
+    if (countNumbersInFile() - 1 != size * (size + 1)) {
+        std::cout << "Некорректный ввод" << std::endl;
+        return -1;
+        }
 
     double** matrix = new double*[size];
     for (int i = 0; i < size; i++) {
