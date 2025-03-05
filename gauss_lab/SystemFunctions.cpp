@@ -17,6 +17,14 @@ SystemFunctions::SystemFunctions(int p_size, double** p_matrix, double* p_vector
     }
 }
 
+SystemFunctions::~SystemFunctions() {
+        for (int i = 0; i < size; i++) {
+            delete[] matrix[i];
+        }
+        delete[] matrix;
+        delete[] vector;
+};
+
 void SystemFunctions::print() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
