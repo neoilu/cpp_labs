@@ -4,3 +4,5 @@ readfile_minilab/compile.sh
 readfile_minilab/main
 triangle_minilab/compile.sh
 triangle_minilab/main
+quadraticE_minilab/compile.sh
+quadraticE_minilab/main
