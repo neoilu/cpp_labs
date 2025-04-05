@@ -7,7 +7,7 @@ quadricE::quadricE(double _a, double _b, double _c) {
     a = _a;
     b = _b;
     c = _c;
-}
+};
 
 void quadricE::print() {
     if (a != 0) {
@@ -31,7 +31,7 @@ void quadricE::print() {
     }
 
     std::cout << " = 0" << std::endl;
-}
+};
 
 void quadricE::solve() {
     if (a == 0) {

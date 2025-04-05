@@ -12,9 +12,6 @@ class Complex {
 
         ~Complex();
 
-        double getRe();
-        double getIm();
-
         void print();
            
 };

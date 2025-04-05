@@ -3,6 +3,7 @@
 class quadricE {
 
     private:
+    
         double a;
         double b;
         double c;

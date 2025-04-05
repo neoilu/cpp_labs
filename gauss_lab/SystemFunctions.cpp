@@ -55,7 +55,7 @@ void SystemFunctions::gauss() {
         double lead = matrix[i][i];
         for (int j = 0; j < size; j++) {
             matrix[i][j] /= lead;
-            if (std::abs(matrix[i][j]) < 1e-9) matrix[i][j] = 0.0;
+            if (std::abs(matrix[i][j]) < 1e-9) matrix[i][j] = 0.00;
         }
         vector[i] /= lead;
 
@@ -92,7 +92,9 @@ bool SystemFunctions::determinant() {
         }
 
         if (std::abs(copiedMatrix[pivot][i]) < 1e-9) {
-            for (int k = 0; k < size; k++) delete[] copiedMatrix[k];
+            for (int k = 0; k < size; k++) {
+                delete[] copiedMatrix[k];
+            }
             delete[] copiedMatrix;
             return false;
         }
@@ -112,9 +114,10 @@ bool SystemFunctions::determinant() {
         }
     }
 
-    for (int i = 0; i < size; i++) delete[] copiedMatrix[i];
+    for (int i = 0; i < size; i++) {
+        delete[] copiedMatrix[i];
+    } 
     delete[] copiedMatrix;
-
     return determinant != 0;
 }
 

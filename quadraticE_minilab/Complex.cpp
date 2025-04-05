@@ -10,14 +10,6 @@ Complex::Complex(double _Re, double _Im) {
 Complex::~Complex() {
 }; 
 
-double Complex::getRe() {
-    return Re;   
-};
-
-double Complex::getIm() {
-    return Im;
-};
-
 void Complex::print() {
     std::cout << Re;
     if (Im != 0) {

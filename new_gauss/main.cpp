@@ -1,8 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <fstream>
-#include "SystemFunctions.h"
-
+#include "gauss_solver.h"
 
 int countNumbersInFile() {
     std::ifstream input("matrix.txt");
@@ -10,7 +9,7 @@ int countNumbersInFile() {
 
     double num;
     int count = 0;
-    while (input >> num) count++; 
+    while (input >> num) count++;
 
     input.close();
     return count;
@@ -27,8 +26,8 @@ int main() {
     std::cin >> choice;
 
     int size = 0;
-    double **matrix = nullptr;
-    double *vector = nullptr;
+    double** matrix = nullptr;
+    double* vector = nullptr;
 
     switch(choice) {
         case 1: {
@@ -73,7 +72,7 @@ int main() {
                 std::cout << "Некорректный ввод" << std::endl;
                 return -1;
             }
-            
+
             matrix = new double*[size];
             vector = new double[size];
             for (int i = 0; i < size; i++) {
@@ -86,7 +85,6 @@ int main() {
                 }
                 input >> vector[i];
             }
-
 
             input.close();
             break;
@@ -105,7 +103,7 @@ int main() {
             for (int i = 0; i < size; i++) {
                 matrix[i] = new double[size];
             }
-            
+
             srand(time(0));
 
             for (int i = 0; i < size; i++) {
@@ -119,17 +117,10 @@ int main() {
         }
     }
 
-    SystemFunctions system(size, matrix, vector);
+    // Вызов метода Гаусса для решения системы
+    gauss(size, matrix, vector);
 
-    std::cout << "Исходная матрица:" << std::endl;
-    system.print();
-
-    if (system.determinant()) {
-        system.gauss();
-    } else {
-        std::cout << "Ошибка: СЛАУ введена неправильно или определитель матрицы приближен к нулю" << std::endl;
-    }
-
+    // Освобождение памяти
     for (int i = 0; i < size; i++) {
         delete[] matrix[i];
     }
