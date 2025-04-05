@@ -6,3 +6,5 @@ triangle_minilab/compile.sh
 triangle_minilab/main
 quadraticE_minilab/compile.sh
 quadraticE_minilab/main
+rational_minilab/compile.sh
+rational_minilab/main
