@@ -12,6 +12,7 @@ private:
 
 public:
     Rational(int num = 0, int den = 1);
+    Rational(double value);
 
     Rational operator+(const Rational& other) const;
     Rational operator-(const Rational& other) const;

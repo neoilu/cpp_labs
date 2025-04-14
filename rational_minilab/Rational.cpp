@@ -1,8 +1,20 @@
 #include "Rational.h"
 #include <numeric>
+#include <cmath>   
+#include <sstream>
+#include <string>
 
 Rational::Rational(int num, int den) : numerator(num), denominator(den) {
     reduce();
+}
+
+Rational::Rational(double value) {
+    const int precision = 1000000;
+    int num = static_cast<int>(round(value * precision));
+    int den = precision;
+    int gcd = std::gcd(num, den);
+    numerator = num / gcd;
+    denominator = den / gcd;
 }
 
 void Rational::reduce() {
@@ -59,12 +71,27 @@ std::ostream& operator<<(std::ostream& os, const Rational& r) {
     return os;
 }
 
-
 std::istream& operator>>(std::istream& is, Rational& r) {
-    is >> r.numerator >> r.denominator;
-    if (r.denominator == 0) {
-        throw "Знаменатель не может быть нулем!";
+    std::string input;
+    is >> input;
+
+    if (input.find('.') != std::string::npos) {
+        double value = std::stod(input);
+        r = Rational(value);
     }
-    r.reduce();
+
+    else if (input.find('/') != std::string::npos) {
+        size_t slash = input.find('/');
+        int num = std::stoi(input.substr(0, slash));
+        int den = std::stoi(input.substr(slash + 1));
+        if (den == 0) throw "Знаменатель не может быть нулем!";
+        r = Rational(num, den);
+    }
+
+    else {
+        int num = std::stoi(input);
+        r = Rational(num, 1);
+    }
+
     return is;
 }
