@@ -8,3 +8,5 @@ quadraticE_minilab/compile.sh
 quadraticE_minilab/main
 rational_minilab/compile.sh
 rational_minilab/main
+randomGenerator_minilab/compile.sh
+randomGenerator_minilab/main
