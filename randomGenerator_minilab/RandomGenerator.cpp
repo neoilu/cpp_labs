@@ -8,6 +8,7 @@ RandomGenerator::RandomGenerator() {
 
 void RandomGenerator::setSeed(int p_seed) {
     seed = p_seed;
+    srand(seed);
 }
 
 void RandomGenerator::setBounds(int p_start, int p_end) {
@@ -21,6 +22,5 @@ void RandomGenerator::setBounds(int p_start, int p_end) {
 }
 
 int RandomGenerator::getRandomNumber() {
-    srand(seed);
     return rand() % (end - start + 1) + start;
 }
