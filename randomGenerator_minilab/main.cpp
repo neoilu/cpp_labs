@@ -4,7 +4,7 @@
 int main() {
     int start;
     int end;
-    int seed;
+    long int seed;
 
     RandomGenerator generator;
     try {

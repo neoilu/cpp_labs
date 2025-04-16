@@ -6,7 +6,7 @@ RandomGenerator::RandomGenerator() {
     end = 1000;
 }
 
-void RandomGenerator::setSeed(int p_seed) {
+void RandomGenerator::setSeed(long int p_seed) {
     seed = p_seed;
     srand(seed);
 }

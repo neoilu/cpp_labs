@@ -3,14 +3,14 @@
 
 class RandomGenerator {
     private:
-        int seed;
+        long int seed;
         int start;
         int end;
     
     public:
         RandomGenerator();
 
-        void setSeed(int p_seed);
+        void setSeed(long int p_seed);
         void setBounds(int p_start, int p_end);
         int getRandomNumber();
 };
