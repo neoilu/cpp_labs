@@ -13,4 +13,5 @@ class RandomGenerator {
         void setSeed(long int p_seed);
         void setBounds(int p_start, int p_end);
         int getRandomNumber();
+        std::vector<int> getRandomSequence(int count);
 };

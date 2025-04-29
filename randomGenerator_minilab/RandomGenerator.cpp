@@ -24,3 +24,11 @@ void RandomGenerator::setBounds(int p_start, int p_end) {
 int RandomGenerator::getRandomNumber() {
     return rand() % (end - start + 1) + start;
 }
+
+std::vector<int> RandomGenerator::getRandomSequence(int count) {
+    std::vector<int> sequence;
+    for (int i = 0; i < count; ++i) {
+        sequence.push_back(getRandomNumber());
+    }
+    return sequence;
+}
